@@ -1,0 +1,19 @@
+{
+  "web_app.py": {
+    "HOST_WEB": "127.0.0.1",
+    "PORT_WEB": 5001
+  },
+  "rest_app.py": {
+    "HOST_REST": "127.0.0.1",
+    "PORT_REST": 5000
+  },
+  "db_connector.py": {
+    "HOST"             : "sql.freedb.tech",
+    "PORT"             : 3306,
+    "USER"             : "freedb_rbelkin",
+    "PASSWORD"         : "zpn#tv?CtCdnpf8",
+    "SCHEMA_NAME"      : "freedb_myData",
+    "USERS_TABLE_NAME" : "users",
+    "CONFIG_TABLE_NAME": "config"
+  }
+}
