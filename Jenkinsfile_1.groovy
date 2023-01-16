@@ -14,9 +14,9 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('H/30 * * * *')])])
                 }
-                git  credentialsId: 'github_credentials', url: 'https://github.com/DinGolan/DevOps-Experts-Final-Project.git', branch: 'main'
+                git  credentialsId: 'github_credentials', url: 'https://github.com/roni12321/DevOps-Experts-Project.git', branch: 'main'
             }
-        }
+        }														
 
         // Step 2 - Install Pip Packages //
         stage("Run `pip install`") {
