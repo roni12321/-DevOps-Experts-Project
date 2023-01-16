@@ -1,0 +1,35 @@
+{
+  "web_app.py": {
+    "HOST_BIND_WEB": "0.0.0.0",
+    "HOST_WEB": "127.0.0.1",
+    "PORT_WEB": 5001
+  },
+  "rest_app.py": {
+    "HOST_BIND_REST": "0.0.0.0",
+    "HOST_REST": "127.0.0.1",
+    "PORT_REST": 5000
+  },
+  "db_connector.py": {
+    "HOST"             : "sql.freedb.tech",
+    "PORT"             : 3306,
+    "USER_NAME"             : "freedb_rbelkin",
+    "PASSWORD"         : "zpn#tv?CtCdnpf8",
+    "SCHEMA_NAME"      : "freedb_myData",
+    "USERS_TABLE_NAME" : "users",
+    "CONFIG_TABLE_NAME": "config",
+    },
+  "backend_testing.py": {
+    "USER_NAME_BACKEND_TEST"    : "Roni Belkin",
+    "USER_ID_BACKEND_TEST"      : 1,
+    "NEW_USER_NAME_BACKEND_TEST": "Tal Busnach"
+  },
+  "frontend_testing.py": {
+    "USER_ID_FRONTEND_TEST": 3
+  },
+  "combined_testing.py": {
+    "USER_NAME_COMBINED_BACKEND_TEST"    : "Ofir Maori",
+    "USER_ID_COMBINED_BACKEND_TEST"      : 5,
+    "NEW_USER_NAME_COMBINED_BACKEND_TEST": "Meiri Azari",
+    "USER_ID_COMBINED_FRONTEND_TEST"     : 7
+  }
+}
