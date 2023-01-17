@@ -41,11 +41,11 @@ pipeline {
                 script {
                     if (checkOS() == "Windows") {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            bat 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                            bat 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                         }
                     } else {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            sh 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                            sh 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                         }
                     }
                 }
@@ -58,11 +58,11 @@ pipeline {
                 script {
                     if (checkOS() == "Windows") {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            bat 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                            bat 'start /min python web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                         }
                     } else {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            sh 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                            sh 'start /min python web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                         }
                     }
                 }
@@ -126,11 +126,11 @@ pipeline {
                 script {
                     if (checkOS() == "Windows") {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            bat 'python Clean\\clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
+                            bat 'python clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
                         }
                     } else {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            sh 'python Clean\\clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
+                            sh 'python clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
                         }
                     }
                 }
