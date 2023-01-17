@@ -8,6 +8,9 @@ import os
 import sys
 import requests
 import warnings
+
+from Config.config import *
+
 warnings.filterwarnings('ignore')
 
 

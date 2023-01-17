@@ -11,13 +11,14 @@ import datetime
 import itertools
 
 
+
 # Sys Path #
 package_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(package_path)
 
 
 # From #
-from Config.config  import *
+from Config.config import *
 from beautifultable import BeautifulTable
 from pypika         import Schema, Query
 

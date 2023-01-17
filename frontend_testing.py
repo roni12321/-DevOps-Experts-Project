@@ -64,7 +64,7 @@ def open_chrome_web_browser(url, browser):
     check_element_from_web_interface(web_driver)
     web_driver.quit()
 
-def fronted_testing_function():
+def frontend_testing_function():
     """
     :explanations:
     - Check with Selenium the Web page components.
@@ -82,74 +82,61 @@ def fronted_testing_function():
     # Jenkins #
     ###########
     is_job_run = get_from_jenkins_arguments().is_job_run
-    print("##################")
+
     ##################
-    print("# Config Details #")
     # Config Details #
-    print("##################\n")
     ##################
     # Create config table inside MySQL DB #
-    # Create config table inside MySQL DB #
     create_config_table()
-    create_config_table()
+
     # Insert rows to config table inside MySQL DB #
-    # Insert rows to config table inside MySQL DB #
-    insert_rows_to_config_table()
     insert_rows_to_config_table(is_job_run, "Frontend")
-    ################
+
     ################
     # User Details #
-    # User Details #
-    ################
     ################
     # Create users table inside MySQL DB #
-    # Create users table inside MySQL DB #
     create_users_table()
-    create_users_table()
-    # Insert rows to users table inside MySQL DB #
+
     # Insert rows to users table inside MySQL DB #
     insert_rows_to_users_table()
-    insert_rows_to_users_table()
+
     # For User Details #
-    # For User Details #
-    while True:
-        if is_job_run:
-            url, browser = get_details_from_external_user_for_frontend("Frontend")
-            url, browser = get_details_from_external_user_for_frontend("Frontend",
-                                                                       user_id_frontend_test=get_user_id_frontend_test())
-            # open Chrome #
-            print("\n#############################################")
-            print("# Jenkins - Parameters For Frontend Testing #")
-            print("#############################################")
-            print("[GET] : " + str({'user_id': get_user_id_frontend_test(), 'url': url, 'browser': browser}) + "\n")
-            open_chrome_web_browser(url, browser)
-            open_chrome_web_browser(url, browser)
-        else:
-            while True:
-                url, browser = get_details_from_external_user_for_frontend("Frontend")
-                open_chrome_web_browser(url, browser)
-                # Check if the `User` want to exit from program #
-                # Check if the `User` want to exit from program #
-                while True:
-            is_exit = input("\nDo you want to exit ?\n* For Yes, type `yes`\n* For No, type `no`\n* Your Choice : ")
-            is_exit = input("\nDo you want to exit ?       \n" + "\n"
-                                                                 "* Press `1` For `exit` ...    \n"
-                                                                 "* Press `2` to `continue` ... \n" + "\n"
-                                                                                                      "* Your Choice : ")
-    is_exit = is_exit.lower()
-    if is_exit == "1" or is_exit == "2":
-        break
+    if is_job_run:
+        url, browser = get_details_from_external_user_for_frontend("Frontend",
+                                                                   user_id_frontend_test=get_user_id_frontend_test())
+
+        print("\n#############################################")
+        print("# Jenkins - Parameters For Frontend Testing #")
+        print("#############################################")
+        print("[GET] : " + str({'user_id': get_user_id_frontend_test(), 'url': url, 'browser': browser}) + "\n")
+
+        open_chrome_web_browser(url, browser)
+
     else:
-        print("\nYou pressed on wrong input number, please try again ...\n")
+
+        while True:
+            url, browser = get_details_from_external_user_for_frontend("Frontend")
+            open_chrome_web_browser(url, browser)
+
+            # Check if the `User` want to exit from program #
+            while True:
+                is_exit = input("\nDo you want to exit ?       \n" + "\n"
+                                                                     "* Press `1` For `exit` ...    \n"
+                                                                     "* Press `2` to `continue` ... \n" + "\n"
+                                                                                                          "* Your Choice : ")
+
+                if is_exit == "1" or is_exit == "2":
+                    break
+                else:
+                    print("\nYou pressed on wrong input number, please try again ...\n")
+
+            if is_exit == "1":
+                break
+
+            elif is_exit == "2":
+                continue
 
 
-if is_exit == "yes":
-    if is_exit == "1":
-        break
-    break
-elif is_exit == "2":
-    continue
 if __name__ == "__main__":
-    if __name__ == "__main__":
-        fronted_testing_function()
-        frontend_testing_function()
+    frontend_testing_function()

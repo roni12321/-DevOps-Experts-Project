@@ -16,7 +16,7 @@
     "PASSWORD"         : "zpn#tv?CtCdnpf8",
     "SCHEMA_NAME"      : "freedb_myData",
     "USERS_TABLE_NAME" : "users",
-    "CONFIG_TABLE_NAME": "config",
+    "CONFIG_TABLE_NAME": "config"
     },
   "backend_testing.py": {
     "USER_NAME_BACKEND_TEST"    : "Roni Belkin",
