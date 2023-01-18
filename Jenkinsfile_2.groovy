@@ -43,13 +43,13 @@ pipeline {
 
                             if (user_choice == "1") {
                                 bat 'echo Run `frontend_testing.py` (Testing)'
-                                bat 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
-                                bat 'python Testing\\frontend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
+                                bat 'start /min python web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                bat 'python frontend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
 
                             } else if (user_choice == "2") {
                                 bat 'echo Run `backend_testing.py` (Testing)'
-                                bat 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
-                                bat 'python Testing\\backend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE%'
+                                bat 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                bat 'python backend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE%'
 
                             } else if (user_choice == "3") {
                                 bat 'echo Run `combined_testing.py` (Testing)'
@@ -58,11 +58,11 @@ pipeline {
                                 echo "`test_side` : ${test_side}"
 
                                 if (test_side == "Backend") {
-                                    bat 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                    bat 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                                 } else if (test_side == "Frontend") {
-                                    bat 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                    bat 'start /min python web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                                 }
-                                bat 'python Testing\\combined_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE% -t %TEST_SIDE%'
+                                bat 'python combined_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE% -t %TEST_SIDE%'
 
                             } else {
                                 bat 'echo `User_Choice` must to be between - [1, 2, 3] ...'
@@ -76,12 +76,12 @@ pipeline {
                             if (user_choice == "1") {
                                 sh 'echo Run `frontend_testing.py` (Testing)'
                                 sh 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
-                                sh 'python Testing\\frontend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
+                                sh 'python frontend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN%'
 
                             } else if (user_choice == "2") {
                                 sh 'echo Run `backend_testing.py` (Testing)'
-                                sh 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
-                                sh 'python Testing\\backend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE%'
+                                sh 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                sh 'python backend_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE%'
 
                             } else if (user_choice == "3") {
                                 sh 'echo Run `combined_testing.py` (Testing)'
@@ -90,11 +90,11 @@ pipeline {
                                 echo "`test_side` : ${test_side}"
 
                                 if (test_side == "Backend") {
-                                    sh 'start /min python REST_API\\rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                    sh 'start /min python rest_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                                 } else if (test_side == "Frontend") {
-                                    sh 'start /min python Web_Interface\\web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
+                                    sh 'start /min python web_app.py -u %DB_USER_NAME% -p %DB_PASSWORD%'
                                 }
-                                sh 'python Testing\\combined_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE% -t %TEST_SIDE%'
+                                sh 'python combined_testing.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -r %REQUEST_TYPE% -t %TEST_SIDE%'
 
                             } else {
                                 sh 'echo `User_Choice` must to be between - [1, 2, 3] ...'
@@ -111,11 +111,11 @@ pipeline {
                 script {
                     if (checkOS() == "Windows") {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            bat 'python Clean\\clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -c %CLEAN_SERVER%'
+                            bat 'python clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -c %CLEAN_SERVER%'
                         }
                     } else {
                         withCredentials([usernamePassword(credentialsId: 'database_credentials', usernameVariable: 'DB_USER_NAME', passwordVariable: 'DB_PASSWORD')]) {
-                            sh 'python Clean\\clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -c %CLEAN_SERVER%'
+                            sh 'python clean_environment.py -u %DB_USER_NAME% -p %DB_PASSWORD% -i %IS_JOB_RUN% -c %CLEAN_SERVER%'
                         }
                     }
                 }
