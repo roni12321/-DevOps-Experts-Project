@@ -22,14 +22,10 @@ pipeline {
         stage("Run `pip install`") {
             steps {
                 script {
-                    if (checkPackages() == "Already Exists") {
-                        echo '[pymysql, requests, selenium, flask, prettytable, pypika, psutil] - Already Exist ...'
+                    if (checkOS() == "Windows") {
+                        bat 'pip install --ignore-installed pymysql requests selenium flask prettytable pypika psutil'
                     } else {
-                        if (checkOS() == "Windows") {
-                            bat 'pip install --ignore-installed pymysql requests selenium flask prettytable pypika psutil'
-                        } else {
-                            sh 'pip install --ignore-installed pymysql requests selenium flask prettytable pypika psutil'
-                        }
+                        sh 'pip install --ignore-installed pymysql requests selenium flask prettytable pypika psutil'
                     }
                 }
             }
